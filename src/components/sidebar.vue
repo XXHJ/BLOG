@@ -1,8 +1,8 @@
 <template>
   <div id="left_menu">
     <div class="menu_name">
-      <h1>ChaoHang'S NOTES</h1>
-      <h5>不如吃茶去</h5>
+      <h1>LeDng'S NOTES</h1>
+      <h5>不如去骑车</h5>
     </div>
     <nav>
       <ul>
@@ -38,13 +38,13 @@
         src="../assets/head.jpg"
         alt="head"
       />
-      <div class="info_name">CHAOHANG</div>
+      <div class="info_name">LEDNG</div>
       <div class="archive">
         <ul>
           <router-link to="/article">
             <li>
               <span class="archive_count">{{ articleNumber }}</span>
-              <span class="archive_name">日志</span>
+              <span class="archive_name">文章</span>
             </li>
           </router-link>
         </ul>
