@@ -21,7 +21,7 @@
 1. Vue.js
 2. vue-cli
 3. vue-router
-4. vue-resource
+4. axios
 5. element-ui
 6. marked
 7. highlight.js
@@ -54,6 +54,10 @@
 |-src               前端
     |-assets        静态资源
     |-components    组件
+    |-utils         工具
+    |-api           前端接口
+    |-config        配置文件
+    |-router        路由文件
     | App.vue
     | main.js
 ```
