@@ -30,7 +30,7 @@ app.use(session({
 }))
 
 app.get('*', function (req, res) {
-  let html = fs.readFileSync(resolve('./' + 'index.html'), 'utf-8')
+  let html = fs.readFileSync(resolve('../public/' + 'index.html'), 'utf-8')
   res.send(html)
 })
 
