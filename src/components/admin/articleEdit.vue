@@ -74,7 +74,6 @@
 import _ from 'lodash'
 import marked from 'marked'
 import hightlight from 'highlight.js'
-import '../../assets/atom-one-light.css'
 import { article } from '../../api/index'
 marked.setOptions({
   hightlight: function (code) {
@@ -236,7 +235,9 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
+@import "../../assets/atom-one-light.css";
+
 .edit_wrap {
   padding: 40px;
   font-size: 16px;

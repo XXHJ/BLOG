@@ -103,4 +103,38 @@ router.post('/api/admin/deleteArticle', function (req, res) {
   })
 })
 
+// 获取评论
+router.get('/api/article/comList/:articleId', (req, res) => {
+  db.Comment.find({ articleId: req.params.articleId }, (err, docs) => {
+    if (err) {
+      res.status(500).send()
+      return
+    }
+    res.send(docs)
+  })
+})
+
+
+// 提交评论
+router.post('/api/article/commentSave', (req, res) => {
+  new db.Comment(req.body).save((err) => {
+    if (err) {
+      res.status(500).send()
+      return
+    }
+    res.send()
+  })
+})
+
+// 删除评论
+router.delete('/api/article/commentDel/:id', (req, res) => {
+  db.Comment.remove({ _id: req.params.id }, (err, docs) => {
+    if (err) {
+      res.status(500).send()
+      return
+    }
+    res.send(docs)
+  })
+})
+
 module.exports = router

@@ -42,7 +42,7 @@
 <script>
 import { article } from '../../api/index'
 export default {
-  name: 'article',
+  name: 'articless',
   data () {
     return {
       articleList: [],

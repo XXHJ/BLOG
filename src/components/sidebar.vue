@@ -94,7 +94,7 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
 #left_menu {
   float: left;
   width: 240px;

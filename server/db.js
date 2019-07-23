@@ -15,9 +15,17 @@ const articleSchema = new mongoose.Schema({
   labels: Array
 })
 
+const commentSchema = new mongoose.Schema({
+  articleId: String,
+  username: String,
+  comment: String,
+  createDate: String
+})
+
 const Models = {
   User: mongoose.model('User', userSchema),
-  Article: mongoose.model('Article', articleSchema)
+  Article: mongoose.model('Article', articleSchema),
+  Comment: mongoose.model('Comment', commentSchema)
 }
 
 module.exports = Models

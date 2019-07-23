@@ -113,7 +113,7 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
 #sign_wrap {
   width: 300px;
   margin: 200px auto;
