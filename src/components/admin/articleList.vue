@@ -49,12 +49,18 @@ export default {
     }
   },
   created: function () {
-    // 获取文章列表
-    article.articleList().then(res => {
-      if (res.status === 200) {
-        this.articleList = res.data
-      }
-    })
+    let userId = sessionStorage.getItem('userId')
+    if (userId) {
+      // 获取文章列表
+      article.userArticle({ userId }).then(res => {
+        if (res.status === 200) {
+          this.articleList = res.data
+        }
+      })
+    } else {
+      this.$router.push('/admin/signin')
+    }
+
   },
   methods: {
     // 跳转至文章编辑页

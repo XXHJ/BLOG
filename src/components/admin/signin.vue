@@ -88,6 +88,8 @@ export default {
         if (_this.password !== res.data.password) {
           _this.$message.error('用户名或密码不正确')
         } else {
+          sessionStorage.setItem('username', res.data.name)
+          sessionStorage.setItem('userId', res.data._id)
           let obj = {
             name: _this.name,
             password: _this.password
@@ -96,6 +98,7 @@ export default {
             userInfo: obj
           }).then(res => {
             if (res.status === 200) {
+              console.log(res)
               _this.$message({
                 message: '登录成功',
                 type: 'success'

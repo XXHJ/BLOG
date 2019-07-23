@@ -37,3 +37,10 @@ export const deleteArticle = (data) => {
         data
     })
 }
+
+export const userArticle = data => {
+    return service({
+        method: "get",
+        url: `/api/articleList/${data.userId}`
+    })
+}

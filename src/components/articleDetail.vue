@@ -1,6 +1,14 @@
 <template>
   <div id="content">
     <div class="article_wrap">
+      <div>
+        <el-button
+          style="float: left;"
+          icon="arrow-left"
+          size="small"
+          @click="goBack"
+        >返回</el-button>
+      </div>
       <div class="article_title article_detail_title">{{ article.title }}</div>
       <div class="article_info">
         <span class="article_info_date">发表于：{{ article.date }}</span>
@@ -95,6 +103,9 @@ export default {
     this.comList(id)
   },
   methods: {
+    goBack () {
+      this.$router.go(-1)
+    },
     articleDetail (id) {
       article.articleDetail({ id }).then(res => {
         if (res.status === 200) {
@@ -135,7 +146,7 @@ export default {
       if (!this.textarea.trim()) return false;
       let data = {
         articleId: this.$route.params.id,
-        username: 'LeDng',
+        username: sessionStorage.getItem('username'),
         comment: this.textarea.trim(),
         createDate: this.getDate()
       }

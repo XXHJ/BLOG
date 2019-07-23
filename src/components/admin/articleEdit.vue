@@ -168,7 +168,8 @@ export default {
           date: this.date,
           content: this.content,
           gist: this.gist,
-          labels: this.labels
+          labels: this.labels,
+          userId: sessionStorage.getItem('userId')
         }
         article.updateArticle({
           articleInformation: obj
@@ -191,7 +192,8 @@ export default {
           date: this.date,
           content: this.content,
           gist: this.gist,
-          labels: this.labels
+          labels: this.labels,
+          userId: sessionStorage.getItem('userId')
         }
         console.log(obj)
         article.saveArticle({

@@ -51,22 +51,22 @@
       </div>
       <ul class="communication">
         <li class="communication_item">
-          <a href="#">
+          <a href="https://github.com/XXHJ">
             <span>GitHub</span>
           </a>
         </li>
         <li class="communication_item">
-          <a href="#">
+          <a href="https://www.zhihu.com/people/liang-nian-zhi-hou/activities">
             <span>知乎</span>
           </a>
         </li>
         <li class="communication_item">
-          <a href="#">
+          <a href="https://www.jianshu.com/u/eef746eb5096">
             <span>简书</span>
           </a>
         </li>
         <li class="communication_item">
-          <a href="#">
+          <a href="https://gitee.com/LeDng/events">
             <span>Codeing</span>
           </a>
         </li>

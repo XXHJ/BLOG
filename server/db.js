@@ -12,7 +12,8 @@ const articleSchema = new mongoose.Schema({
   date: String,
   content: String,
   gist: String,
-  labels: Array
+  labels: Array,
+  userId: String
 })
 
 const commentSchema = new mongoose.Schema({

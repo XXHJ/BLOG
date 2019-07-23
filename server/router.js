@@ -8,13 +8,14 @@ const checkNotLogin = check.checkNotLogin
 
 // 储存用户名密码
 router.post('/api/admin/signup', function (req, res) {
-  new db.User(req.body.userInfo).save(function (err) {
-    if (err) {
-      res.status(500).send()
-      return
-    }
-    res.send()
-  })
+  new db.User(req.body.userInfo)
+    .save(function (err) {
+      if (err) {
+        res.status(500).send()
+        return
+      }
+      res.send()
+    })
 })
 
 // 登录
@@ -25,13 +26,14 @@ router.post('/api/admin/signin', function (req, res) {
 
 // 根据用户名获取用户
 router.get('/api/admin/getUser/:name', function (req, res) {
-  db.User.findOne({ name: req.params.name }, function (err, docs) {
-    if (err) {
-      console.error(err)
-      return
-    }
-    res.send(docs)
-  })
+  db.User
+    .findOne({ name: req.params.name }, function (err, docs) {
+      if (err) {
+        console.error(err)
+        return
+      }
+      res.send(docs)
+    })
 })
 
 
@@ -39,35 +41,54 @@ router.get('/api/admin/getUser/:name', function (req, res) {
 
 // 获取所有文章
 router.get('/api/articleList', function (req, res) {
-  db.Article.find({}, function (err, docs) {
-    if (err) {
-      console.error(err)
-      return
-    }
-    res.json(docs)
-  })
+  db.Article
+    .find({})
+    .sort({ 'date': -1 })
+    .exec(function (err, docs) {
+      if (err) {
+        console.error(err)
+        return
+      }
+      res.json(docs)
+    })
+})
+
+// 根据用户获取文章
+router.get('/api/articleList/:userId', (req, res) => {
+  db.Article
+    .find({ userId: req.params.userId })
+    .sort({ "date": -1 })
+    .exec((err, docs) => {
+      if (err) {
+        console.error(err)
+        return
+      }
+      res.json(docs)
+    })
 })
 
 // 文章详情页
 router.get('/api/articleDetail/:id', function (req, res) {
-  db.Article.findOne({ _id: req.params.id }, function (err, docs) {
-    if (err) {
-      console.error(err)
-      return
-    }
-    res.send(docs)
-  })
+  db.Article
+    .findOne({ _id: req.params.id }, function (err, docs) {
+      if (err) {
+        console.error(err)
+        return
+      }
+      res.send(docs)
+    })
 })
 
 // 文章保存
 router.post('/api/admin/saveArticle', function (req, res) {
-  new db.Article(req.body.articleInformation).save(function (err) {
-    if (err) {
-      res.status(500).send()
-      return
-    }
-    res.send()
-  })
+  new db.Article(req.body.articleInformation)
+    .save(function (err) {
+      if (err) {
+        res.status(500).send()
+        return
+      }
+      res.send()
+    })
 })
 
 // 文章更新
@@ -82,6 +103,7 @@ router.post('/api/admin/updateArticle', function (req, res) {
     docs[0].content = info.content
     docs[0].gist = info.gist
     docs[0].labels = info.labels
+    docs[0].userId = info.userId
     db.Article(docs[0]).save(function (err) {
       if (err) {
         res.status(500).send()
@@ -94,47 +116,51 @@ router.post('/api/admin/updateArticle', function (req, res) {
 
 // 文章删除
 router.post('/api/admin/deleteArticle', function (req, res) {
-  db.Article.remove({ _id: req.body._id }, function (err) {
-    if (err) {
-      res.status(500).send()
-      return
-    }
-    res.send()
-  })
+  db.Article
+    .remove({ _id: req.body._id }, function (err) {
+      if (err) {
+        res.status(500).send()
+        return
+      }
+      res.send()
+    })
 })
 
 // 获取评论
 router.get('/api/article/comList/:articleId', (req, res) => {
-  db.Comment.find({ articleId: req.params.articleId }, (err, docs) => {
-    if (err) {
-      res.status(500).send()
-      return
-    }
-    res.send(docs)
-  })
+  db.Comment
+    .find({ articleId: req.params.articleId })
+    .sort({ 'createDate': -1 }).exec((err, docs) => {
+      if (err) {
+        res.status(500).send()
+        return
+      }
+      res.send(docs)
+    })
 })
-
 
 // 提交评论
 router.post('/api/article/commentSave', (req, res) => {
-  new db.Comment(req.body).save((err) => {
-    if (err) {
-      res.status(500).send()
-      return
-    }
-    res.send()
-  })
+  new db.Comment(req.body)
+    .save((err) => {
+      if (err) {
+        res.status(500).send()
+        return
+      }
+      res.send()
+    })
 })
 
 // 删除评论
 router.delete('/api/article/commentDel/:id', (req, res) => {
-  db.Comment.remove({ _id: req.params.id }, (err, docs) => {
-    if (err) {
-      res.status(500).send()
-      return
-    }
-    res.send(docs)
-  })
+  db.Comment
+    .remove({ _id: req.params.id }, (err, docs) => {
+      if (err) {
+        res.status(500).send()
+        return
+      }
+      res.send(docs)
+    })
 })
 
 module.exports = router
