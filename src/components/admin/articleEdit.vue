@@ -195,7 +195,6 @@ export default {
           labels: this.labels,
           userId: sessionStorage.getItem('userId')
         }
-        console.log(obj)
         article.saveArticle({
           articleInformation: obj
         }).then(res => {
