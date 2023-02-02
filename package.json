@@ -22,7 +22,7 @@
     "mongoose": "^4.9.1",
     "vue": "^2.2.1",
     "vue-awesome": "^2.2.0",
-    "vue-resource": "^1.2.1",
+    "vue-resource": "^1.5.3",
     "vue-router": "^2.3.0"
   },
   "devDependencies": {
